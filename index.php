@@ -1,0 +1,279 @@
+<html>
+<head>
+<title>Colores</title>
+<style>
+body {
+	background-color:white;
+	transition: all 2000ms;
+	}
+h1 {
+	color: white;
+	font-family: 'Lilita One', cursive;
+	text-shadow: 0vw 0vw 0.3vw rgba(0,0,0,1);
+	font-size: 10vw;
+	text-align: center;
+	margin-top: 200px;
+	}
+</style>
+<link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
+</head>
+
+<body>
+<audio id="audio-miau" src="http://macrigato.com.ar/mdemiau/audios/miau.mp3"></audio>
+<h1>Nombra un color</h1>
+<script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script>
+var recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition || window.mozSpeechRecognition || window.msSpeechRecognition)();
+var audio = [];
+var target;
+var escuchando = false;
+
+$(document).ready(function() {
+	
+recognition.lang = 'es-ES';
+recognition.interimResults = false;
+recognition.maxAlternatives = 5;
+recognition.start();
+
+recognition.onresult = function(event) {
+	
+	var dicho = event.results[0][0].transcript;
+	var color;
+	
+	switch(dicho.toLowerCase()){
+		case "rojo":
+			color = "red";
+			break;
+		case "amarillo":
+			color = "yellow";
+			break;
+		case "verde":
+			color = "green";
+			break;
+		case "azul":
+			color = "blue";
+			break;
+		case "blanco":
+			color = "white";
+			break;
+		case "negro":
+			color = "black";
+			break;
+		case "gris":
+			color = "grey";
+			break;
+		case "rosa":
+			color = "pink";
+			break;
+		case "celeste":
+			color = "lightblue";
+			break;
+		case "marrón":
+			color = "brown";
+			break;	
+		case "celeste":
+			color = "lightblue";
+			break;
+		case "salmón":
+			color = "salmon";
+			break;
+		case "ladrillo":
+			color = "firebrick";
+			break;
+		case "rojo oscuro":
+			color = "darkred";
+			break;
+		case "coral claro":
+			color = "lightcoral";
+			break;
+		case "rojo indio":
+			color = "indianred";
+			break;
+		case "carmesí":
+		case "carmesí":
+			color = "crimson";
+			break;
+		case "coral":
+			color = "coral";
+			break;
+		case "tomate":
+			color = "tomato";
+			break;
+		case "naranja":
+		case "anaranjado":
+			color = "orange";
+			break;
+		case "naranja oscuro":
+		case "anaranjado oscuro":
+			color = "darkorange";
+			break;
+		case "dorado":
+		case "oro":
+			color = "gold";
+			break;
+		case "amarillo claro":
+			color = "lightyellow";
+			break;
+		case "caqui":
+			color = "khaki";
+			break;
+		case "caqui oscuro":
+			color = "darkkhaki";
+			break;
+		case "lavanda":
+		case "la banda":
+			color = "lavender";
+			break;
+		case "violeta":
+		case "violetta":
+			color = "violet";
+			break;
+		case "orquídea":
+			color = "orchid";
+			break;
+		case "fucsia":
+		case "magenta":
+			color = "fuchsia";
+			break;
+		case "amatista":
+			color = "amethyst";
+			break;	
+		case "púrpura":
+			color = "purple";
+			break;	
+		case "índigo":
+			color = "indigo";
+			break;	
+		case "lima":
+			color = "lime";
+			break;	
+		case "oliva":
+			color = "olive";
+			break;	
+		case "cian":
+			color = "cyan";
+			break;	
+		case "turquesa":
+			color = "turquoise";
+			break;	
+		case "turquesa oscuro":
+			color = "darkturquoise";
+			break;	
+		case "turquesa media":
+			color = "mediumturquoise";
+			break;	
+		case "aguamarina":
+		case "agua marina":
+		case "azul aguamarina":
+			color = "aquamarine";
+			break;	
+		case "azúl pólvora":
+		case "pólvora":
+			color = "powderblue";
+			break;	
+		case "azul cielo":
+			color = "skyblue";
+			break;	
+		case "azul marino":
+			color = "navy";
+			break;	
+		case "chocolate":
+			color = "chocolate";
+			break;	
+		case "nieve":
+			color = "snow";
+			break;	
+		case "beige":
+			color = "beige";
+			break;	
+		case "hueso":
+			color = "ivory";
+			break;	
+		case "verde oscuro":
+			color = "darkgreen";
+			break;	
+		case "violeta oscuro":
+			color = "darkviolet";
+			break;	
+		case "orquidea oscuro":
+			color = "darkcorchid";
+			break;	
+		case "magenta oscuro":
+			color = "darkmagenta";
+			break;	
+		case "azul pizarra":
+			color = "slateblue";
+			break;	
+		case "azul pizarra oscuro":
+			color = "darkslateblue";
+			break;	
+		case "azul pizarra medio":
+			color = "mediumslateblue";
+			break;	
+		case "amarillo verdoso":
+			color = "greenyellow";
+			break;	
+		case "verde lima":
+			color = "limegreen";
+			break;	
+		case "verde primavera":
+			color = "springgreen";
+			break;	
+		case "verde mar":
+			color = "seagreen";
+			break;	
+		case "verdebosque":
+			color = "forestgreen";
+			break;	
+		case "gris claro":
+			color = "#ccc";
+			break;	
+		case "gris medio":
+			color = "#888";
+			break;	
+		case "gris oscuro":
+			color = "#444";
+			break;	
+		case "amarillo macri":
+			color = "gold";
+			document.getElementById("audio-miau").play();
+			break;	
+		case "":
+			color = "";
+			break;	
+		case "":
+			color = "";
+			break;	
+		case "":
+			color = "";
+			break;	
+		case "":
+			color = "";
+			break;	
+		case "":
+			color = "";
+			break;	
+		case "":
+			color = "";
+			break;	
+		default:
+			color = $("body").css("background-color");
+	}
+	
+	if(color != $("body").css("background-color")){
+		$("h1").html(dicho);
+		$("body").css("background-color",color);
+	}else {
+		$("h1").html("eso no es un color");
+	}
+};
+	
+recognition.onend = function(event) {
+	
+	recognition.start();
+};
+
+});
+</script>
+</body>
+</html>
